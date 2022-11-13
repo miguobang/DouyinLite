@@ -1,0 +1,10 @@
+{
+    "name": "抖音极速版[加密版]",
+    "main": "main.js",
+    "ignore": [
+        "build"
+    ],
+    "packageName": "com.tony.douyin",
+    "versionName": "1.0.2",
+    "versionCode": 1
+}
