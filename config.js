@@ -2,7 +2,7 @@
  * @Author: TonyJiangWJ
  * @Date: 2019-12-09 20:42:08
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-10-26 22:45:50
+ * @Last Modified time: 2022-11-15 00:12:15
  * @Description: 
  */
 let currentEngine = engines.myEngine().getSource() + ''
@@ -72,7 +72,7 @@ let default_config = {
   // 标记是否清除webview缓存
   clear_webview_cache: false,
   ukey: '',
-  countdown_id: 'com.ss.android.ugc.aweme.lite:id/mo'
+  countdown_id: 'com.ss.android.ugc.aweme.lite:id/mi'
 }
 // 不同项目需要设置不同的storageName，不然会导致配置信息混乱
 let CONFIG_STORAGE_NAME = 'autoscript_douyin'
