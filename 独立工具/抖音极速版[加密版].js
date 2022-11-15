@@ -13,44 +13,16 @@ let encryptedRequire = (() => {
 })()
 let { config } = require('../config.js')(runtime, this)
 let decryptRunner = new DecryptRunner(runtime, context)
-let args = engines.myEngine().execArgv
-console.log('来源参数：' + JSON.stringify(args))
-let executeByTimeTask = args.executeByTimeTask
-if (!executeByTimeTask) {
-  let key = dialogs.rawInput('请输入你的专属Key', config.ukey)
-  if (!key || key.length != 44) {
-    toastLog('key值不正确，请重新获取')
-    exit()
-  }
-  config.overwrite('ukey', key)
-  config.ukey = key
+let key = dialogs.rawInput('请输入你的专属Key', config.ukey)
+if (!key || key.length != 44) {
+  toastLog('key值不正确，请重新获取')
+  exit()
 }
+config.overwrite('ukey', key)
+config.ukey = key
 encryptedRequire.setKey(config.ukey)
 encryptedRequire.checkExpired()
 let timeout = encryptedRequire.inspectExpire()
 toastLog('过期时间：' + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(timeout)))
-
-decryptRunner.decryptAndRunByPlugin(encryptedRequire.javaEncrypt, files.cwd() + "/抖音极速版.ejs", fillConfig({ path: files.cwd(), arguments: args}))
-
-
-function fillConfig(c){
-  var config = new com.stardust.autojs.execution.ExecutionConfig();
-  c = c || {};
-  c.path = c.path || files.cwd();
-  if(c.path){
-     config.workingDirectory = c.path;
-  }
-  config.delay = c.delay || 0;
-  config.interval = c.interval || 0;
-  config.loopTimes = (c.loopTimes === undefined)? 1 : c.loopTimes;
-  if(c.arguments){
-      var arguments = c.arguments;
-      for(var key in arguments){
-          if(arguments.hasOwnProperty(key)){
-              config.setArgument(key, arguments[key]);
-          }
-      }
-  }
-  return config;
-}
+decryptRunner.decryptAndRunByPlugin(encryptedRequire.javaEncrypt, files.cwd() + "/抖音极速版.ejs", files.cwd())
 

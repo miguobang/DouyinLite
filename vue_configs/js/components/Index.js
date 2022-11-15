@@ -8,6 +8,10 @@ let Index = {
           link: '/basic/lock'
         },
         {
+          title: '抖音设置',
+          link: '/basic/douyin'
+        },
+        {
           title: '日志设置',
           link: '/basic/log'
         },

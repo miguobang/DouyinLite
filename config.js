@@ -2,7 +2,7 @@
  * @Author: TonyJiangWJ
  * @Date: 2019-12-09 20:42:08
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-11-15 00:12:15
+ * @Last Modified time: 2022-11-16 00:24:11
  * @Description: 
  */
 let currentEngine = engines.myEngine().getSource() + ''
@@ -38,7 +38,7 @@ let default_config = {
   // 是否保存日志文件，如果设置为保存，则日志文件会按时间分片备份在logback/文件夹下
   save_log_file: true,
   async_save_log_file: true,
-  back_size: '100',
+  back_size: '1024',
   // 控制台最大日志长度，仅免费版有用
   console_log_maximum_size: 1500,
   // 通话状态监听
@@ -72,7 +72,9 @@ let default_config = {
   // 标记是否清除webview缓存
   clear_webview_cache: false,
   ukey: '',
-  countdown_id: 'com.ss.android.ugc.aweme.lite:id/mi'
+  countdown_id: 'com.ss.android.ugc.aweme.lite:id/mi',
+  automatic_look_threshold: 90,
+  sleep_in_automatic: 15,
 }
 // 不同项目需要设置不同的storageName，不然会导致配置信息混乱
 let CONFIG_STORAGE_NAME = 'autoscript_douyin'

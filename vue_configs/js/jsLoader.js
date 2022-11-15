@@ -5,6 +5,7 @@ const loadJsList = [
   './js/components/configuration/About.js',
   './js/components/configuration/DevelopConfig.js',
   './js/components/configuration/CommonConfigs.js',
+  './js/components/configuration/DouyinConfigs.js',
   './js/components/Index.js',
 ]
 /**

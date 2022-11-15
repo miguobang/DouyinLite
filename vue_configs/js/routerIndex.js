@@ -11,6 +11,7 @@ const router = new VueRouter({
     { path: '/basic/lock', component: LockConfig, meta: { index: 1 } },
     { path: '/basic/floaty', component: FloatyConfig, meta: { index: 1 } },
     { path: '/basic/log', component: LogConfig, meta: { index: 1 } },
+    { path: '/basic/douyin', component: DouyinConfig, meta: { index: 1 } },
     { path: '/advance/skipPackage', component: SkipPackageConfig, meta: { index: 1 } },
     { path: '/advance/common', component: AdvanceCommonConfig, meta: { index: 1 } },
     { path: '/about', component: About, meta: { index: 1 } },
