@@ -1,0 +1,6 @@
+let { config: _config } = require('../config.js')(runtime, global)
+let singletonRequire = require('../lib/SingletonRequirer.js')(runtime, global)
+let commonFunction = singletonRequire('CommonFunction')
+console.show()
+console.log('准备杀死当前应用')
+commonFunction.killCurrentApp()

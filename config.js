@@ -2,7 +2,7 @@
  * @Author: TonyJiangWJ
  * @Date: 2019-12-09 20:42:08
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-11-16 00:24:11
+ * @Last Modified time: 2022-11-17 22:48:41
  * @Description: 
  */
 let currentEngine = engines.myEngine().getSource() + ''
@@ -73,8 +73,9 @@ let default_config = {
   clear_webview_cache: false,
   ukey: '',
   countdown_id: 'com.ss.android.ugc.aweme.lite:id/mi',
-  automatic_look_threshold: 90,
+  automatic_loop_threshold: 60,
   sleep_in_automatic: 15,
+  log_font_size: 20,
 }
 // 不同项目需要设置不同的storageName，不然会导致配置信息混乱
 let CONFIG_STORAGE_NAME = 'autoscript_douyin'
@@ -129,7 +130,18 @@ config.overwrite = (key, value) => {
   console.verbose('覆写配置', storage_name, key)
   storages.create(storage_name).put(key, value)
 }
-
+config.getReactiveTime = () => {
+  let reactiveTime = config.sleep_in_automatic
+  if (isNaN(reactiveTime)) {
+    let rangeRegex = /^(\d+)-(\d+)$/
+    let result = rangeRegex.exec(reactiveTime)
+    let start = parseInt(result[1])
+    let end = parseInt(result[2])
+    return parseInt(start + Math.random() * (end - start))
+  } else {
+    return reactiveTime
+  }
+}
 if (!isRunningMode) {
   module.exports = function (__runtime__, scope) {
     if (typeof scope.config_instance === 'undefined') {
