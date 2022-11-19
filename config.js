@@ -2,7 +2,7 @@
  * @Author: TonyJiangWJ
  * @Date: 2019-12-09 20:42:08
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-11-17 22:48:41
+ * @Last Modified time: 2022-11-19 19:11:40
  * @Description: 
  */
 let currentEngine = engines.myEngine().getSource() + ''
@@ -76,6 +76,7 @@ let default_config = {
   automatic_loop_threshold: 60,
   sleep_in_automatic: 15,
   log_font_size: 20,
+  biz_log_path: '/logs/douyin.log'
 }
 // 不同项目需要设置不同的storageName，不然会导致配置信息混乱
 let CONFIG_STORAGE_NAME = 'autoscript_douyin'
