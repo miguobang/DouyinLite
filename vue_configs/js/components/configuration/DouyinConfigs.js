@@ -13,7 +13,7 @@
         ukey: '',
         log_font_size: 25,
       },
-      timeoutDate: '2022-11-11 19:00:00',
+      timeoutDate: $app.mock ? '2022-11-11 19:00:00' : '',
       validations: {
         sleep_in_automatic: {
           validate: () => false,
@@ -46,7 +46,7 @@
   },
   watch: {
     'configs.ukey': function () {
-      if (this.configs.ukey && this.configs.ukey.length == 44) {
+      if (this.configs.ukey && this.configs.ukey.length >= 44) {
         this.loadExpired()
       }
     },

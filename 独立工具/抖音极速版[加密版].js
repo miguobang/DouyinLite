@@ -20,6 +20,7 @@ try {
     errorInfo('获取无障碍权限失败')
     exit()
   }
+  auto()
 } catch (e) {
   toastLog('无障碍异常 重新启动' + e)
   commonFunctions.disableAccessibilityAndRestart()
@@ -30,7 +31,7 @@ console.log('来源参数：' + JSON.stringify(args))
 let executeByTimeTask = args.executeByTimeTask
 if (!executeByTimeTask) {
   let key = dialogs.rawInput('请输入你的专属Key', config.ukey)
-  if (!key || key.length != 44) {
+  if (!key || key.length < 44) {
     toastLog('key值不正确，请重新获取')
     exit()
   }
