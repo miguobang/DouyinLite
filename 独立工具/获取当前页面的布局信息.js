@@ -2,7 +2,7 @@
  * @Author: TonyJiangWJ
  * @Date: 2020-04-29 14:44:49
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-11-12 10:47:05
+ * @Last Modified time: 2022-11-22 16:08:54
  * @Description: https://github.com/TonyJiangWJ/AutoScriptBase
  */
 let { config } = require('../config.js')(runtime, global)
@@ -19,6 +19,7 @@ importClass(com.tony.autojs.search.UiObjectTreeBuilder)
 let args = engines.myEngine().execArgv
 console.log('来源参数：' + JSON.stringify(args))
 let immediate = args.immediate
+let capture = args.capture
 commonFunctions.registerOnEngineRemoved(function () {
   logUtils.showCostingInfo()
 }, 'logging cost')
@@ -29,6 +30,12 @@ commonFunctions.registerOnEngineRemoved(function () {
 if (!commonFunctions.ensureAccessibilityEnabled()) {
   toastLog('获取无障碍权限失败')
   exit()
+}
+if (capture) {
+  if (!requestScreenCapture()) {
+    toastLog('请求截图权限失败')
+    exit()
+  }
 }
 // 清空所有日志
 logUtils.clearLogFile()
@@ -55,6 +62,14 @@ let limit = 3
 while (limit > 0 && !immediate) {
   floatyInstance.setFloatyText('倒计时' + limit-- + '秒')
   sleep(1000)
+}
+
+let imgBase64 = null
+if (capture) {
+  floatyInstance.setFloatyText(' ')
+  sleep(50)
+  let screen = captureScreen()
+  imgBase64 = images.toBase64(screen)
 }
 floatyInstance.setFloatyText('正在分析中...')
 let windowRootsList = getWindowRoots()
@@ -98,6 +113,14 @@ if (root) {
     let time = formatDate(new Date(), 'HHmmss')
     files.write(hisPath + '/uiobjects.' + time + '.json', content)
     files.write(hisPath + '/data.' + time + '.js', 'let objects = ' + content)
+    if (capture && imgBase64) {
+      let base64Content = 'data:image/png;base64,' + imgBase64
+      files.write('/img.log', base64Content)
+      files.write(hisPath + '/img.' + time + '.log', base64Content)
+      let jsBase64 = 'let imageBase64=\'' + base64Content + '\''
+      files.write(hisPath + '/img.js', jsBase64)
+      files.write(hisPath + '/img.' + time + '.js', jsBase64)
+    }
     toastLog('控件元数据已保存到：' + savePath)
   })
   let resultList = rawList.sort((a, b) => {

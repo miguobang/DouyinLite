@@ -12,6 +12,7 @@
         countdown_id: 'com.ss.android.ugc.aweme.lite:id/mi',
         ukey: '',
         log_font_size: 25,
+        auto_watch_video: true,
       },
       timeoutDate: $app.mock ? '2022-11-11 19:00:00' : '',
       validations: {
@@ -101,6 +102,10 @@
     <van-field v-model="configs.sleep_in_automatic" :error-message="validationError.sleep_in_automatic" error-message-align="right" label="休息时间" type="text" placeholder="请输入休息间隔" input-align="right" >
       <template #right-icon><span>分</span></template>
     </van-field>
+    <tip-block>
+      开启此项之后，通过定时任务触发时会先去刷热榜视频活跃账号。同时在纯自动模式运行到最大持续时间时，也会自动去刷热榜视频点赞。如不需要可以将其关闭
+    </tip-block>
+    <switch-cell title="自动刷视频点赞" v-model="configs.auto_watch_video" />
     <van-field v-model="configs.countdown_id" label="逛街界面倒计时控件ID" label-width="10em" type="text" placeholder="请输入" input-align="right" stop-propagation />
   </van-cell-group>
   </div>`
