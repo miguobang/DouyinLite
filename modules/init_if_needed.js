@@ -2,13 +2,13 @@
  * @Author: TonyJiangWJ
  * @Date: 2020-09-18 13:40:43
  * @Last Modified by: TonyJiangWJ
- * @Last Modified time: 2022-09-19 16:47:25
+ * @Last Modified time: 2022-11-23 09:35:06
  * @Description: 免费版专用
  */
 module.exports = function (runtime, scope) {
 
   if (context.getPackageName() !== 'org.autojs.autojspro') {
-    var modules = ["$zip", "$base64", "$crypto", "$power_manager"]
+    var modules = ["$zip", "$base64", "$crypto", "$power_manager", "mDialogs"]
     var len = modules.length
     for (var i = 0; i < len; i++) {
       var m = modules[i]
