@@ -13,7 +13,15 @@ let unlocker = require('../lib/Unlock.js')
 unlocker.exec()
 
 let mainScriptPath = FileUtils.getRealMainScriptPath(true)
-let configuration = { executeByTimeTask: true, needRelock: unlocker.needRelock(), exitInMinutes: 120 }
+let configuration = {
+  executeByTimeTask: true,
+  needRelock: unlocker.needRelock(),
+  exitInMinutes: 240,
+  // 只逛街
+  shoppingOnly: true,
+  // 不看视频
+  noVideoWatch: true,
+}
 ui.run(function () {
   engines.execScriptFile(mainScriptPath + "/独立工具/抖音极速版[加密版].js", { path: mainScriptPath + "/独立工具/", arguments: configuration })
 })

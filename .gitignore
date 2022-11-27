@@ -11,3 +11,9 @@ ExternalUnlockDevice.js
 *.txt.*
 *.db
 logs/
+dist-obfus/
+dist/
+node_modules/
+独立工具/抖音极速版.js
+独立工具/今日头条极速版.js
+*.min.js

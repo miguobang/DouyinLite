@@ -68,4 +68,4 @@ function fillConfig(c) {
 }
 
 
-encryptedRequire.javaEncrypt.decryptAndRun(runtime, files.cwd() + "/抖音极速版.ejs", fillConfig({ path: files.cwd(), arguments: args}))
+encryptedRequire.javaEncrypt.decryptAndRun(runtime, files.cwd() + "/今日头条极速版.ejs", fillConfig({ path: files.cwd(), arguments: args}))
