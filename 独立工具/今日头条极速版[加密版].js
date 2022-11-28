@@ -27,7 +27,7 @@ try {
   commonFunctions.setTaskArgs(args)
   commonFunctions.disableAccessibilityAndRestart()
 }
-if (!args.intent) {
+if (!args.intent && !args.executeByTimeTask) {
   let key = dialogs.rawInput('请输入你的专属Key', config.ukey)
   if (!key || key.length < 44) {
     toastLog('key值不正确，请重新获取')
