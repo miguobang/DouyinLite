@@ -24,7 +24,9 @@ try {
   auto()
 } catch (e) {
   toastLog('无障碍异常 重新启动' + e)
-  commonFunctions.setTaskArgs(args)
+  if (args.executeByTimeTask) {
+    commonFunctions.setTaskArgs(args)
+  }
   commonFunctions.disableAccessibilityAndRestart()
 }
 if (!args.intent && !args.executeByTimeTask) {
@@ -68,4 +70,4 @@ function fillConfig (c) {
 }
 
 
-encryptedRequire.javaEncrypt.decryptAndRun(runtime, files.cwd() + "/抖音极速版.ejs", fillConfig({ path: files.cwd(), arguments: args }))
+encryptedRequire.javaEncrypt.decryptAndRun(runtime, files.cwd() + "/抖音极速版.ejs", fillConfig({ path: files.cwd(), arguments: args}))
